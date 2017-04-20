@@ -1,1 +1,6 @@
-GraphicsWindow.Show()
+BackBone()
+Sub BackBone
+  GraphicsWindow.Show()
+  _Buttons["Start"] = Controls.AddButton("Start",300,10)
+  Controls.Move(_Buttons["Start"],5,5)
+EndSub
