@@ -1,0 +1,13 @@
+C:\Users\Abhishek\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\bin\Release\Ather-CG.exe.config
+C:\Users\Abhishek\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\bin\Release\Ather-CG.exe
+C:\Users\Abhishek\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\bin\Release\Ather-CG.pdb
+C:\Users\Abhishek\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\bin\Release\LitDev.dll
+C:\Users\Abhishek\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\bin\Release\Microsoft.Kinect.Wpf.Controls.dll
+C:\Users\Abhishek\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\bin\Release\SmallBasicLibrary.dll
+C:\Users\Abhishek\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\bin\Release\Microsoft.Kinect.dll
+C:\Users\Abhishek\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\bin\Release\LitDev.xml
+C:\Users\Abhishek\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\bin\Release\SmallBasicLibrary.xml
+C:\Users\Abhishek\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\obj\Release\Ather_CG.Properties.Resources.resources
+C:\Users\Abhishek\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\obj\Release\Ather-CG.csproj.GenerateResource.Cache
+C:\Users\Abhishek\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\obj\Release\Ather-CG.exe
+C:\Users\Abhishek\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\obj\Release\Ather-CG.pdb
