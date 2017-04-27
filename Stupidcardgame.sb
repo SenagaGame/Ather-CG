@@ -7,7 +7,6 @@ Main_Menu()
 
 '    Game Screens_____________________________________________________________________________
 Sub Main_Menu
- 
   GraphicsWindow.Clear()
   GH = 800
   GW = 700
@@ -17,10 +16,10 @@ Sub Main_Menu
   _Button_Data[1] = "Caption=Play;Left=300;Top=10;Width=200;Height=50;X=250;"
   _Button_Data[2] = "Caption=Options;Left=300;Top=10;Width=200;Height=50;X=250;"
   _Button_Data[3] = "Caption=Place_Holder;Left=300;Top=10;Width=200;Height=50;X=250;"
-  _Button_Data[4] = "Caption=Main Menu;Left=40;Top=10;Width=200;Height=50;X=20;Y=20"
+  _Button_Data[4] = "Caption=Main Menu;Left=40;Top=10;Width=200;Height=50;X=250;"
   
-  For i = 1 To 3 
-    _Buttons[i] = Controls.AddButton(_Button_Data[i]["Caption"],_Button_Data[i]["Left"],_Button_Data[i]["Right"])
+  For i = 1 To Array.GetItemCount(_Button_Data) 
+    _Buttons[i] = Controls.AddButton(_Button_Data[i]["Caption"],_Button_Data[i]["Left"],_Button_Data[i]["Top"])
     Controls.SetSize(_Buttons[i],_Button_Data[i]["Width"],_Button_Data[i]["Height"])
     Controls.Move(_Buttons[i],_Button_Data[i]["X"],300+i*100)
   EndFor
@@ -33,14 +32,12 @@ EndSub
 
 
 Sub Back_Ground
-
+  
   GraphicsWindow.Height = GH
   GraphicsWindow.Width = GW
   GraphicsWindow.Show()
   
 EndSub
-
-
 
 Sub Game_Background
   GraphicsWindow.Clear()
@@ -63,32 +60,36 @@ EndSub
 
 
 Sub Options
+  
 EndSub
 
 '  Mechanics et all ___________________________________________________
 
 Sub Button_Click
-  If Controls.LastClickedButton = _Buttons[1] Then
+  LastClickedButton = Controls.LastClickedButton
+  Handler()
+EndSub
+
+Sub Handler
+  If LastClickedButton = _Buttons[1] Then
     Game_Background()
-  ElseIf Controls.LastClickedButton = _Buttons[2] Then
+  ElseIf LastClickedButton = _Buttons[2] Then
     GraphicsWindow.ShowMessage("There are no Options","ERROR")
-  ElseIf Controls.LastClickedButton = _Buttons[3] Then
+  ElseIf LastClickedButton = _Buttons[3] Then
     
-  ElseIf Controls.LastClickedButton = _Buttons[4] Then
+  ElseIf LastClickedButton= _Buttons[4] Then
     Main_Menu()
-  ElseIf Controls.LastClickedButton = _Buttons[5] Then
+  ElseIf LastClickedButton = _Buttons[5] Then
   Else
-    GraphicsWindow.ShowMessage("This button does nothing","ERROR")
-    
-    
-    
-    
-    
+    GraphicsWindow.ShowMessage("This button does not yet have an implementation","ERROR")
   EndIf
 EndSub
 
 Sub MouseDown
+  
 EndSub
 
 Sub Call_Card
+  
 EndSub
+  
