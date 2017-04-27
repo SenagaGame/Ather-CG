@@ -19,12 +19,15 @@ Sub Main_Menu
   GraphicsWindow.Clear()
   GH = 800
   GW = 700
-  _Buttons[1] = Controls.AddButton("Play",300,10)
-  _Buttons[2] = Controls.AddButton("Options",300,10)
-  _Buttons[3] = Controls.AddButton("Place_holder",300,10) 
+  
+  _Button_Data[1] = "Caption=Play;Left=300;Top=10;Width=200;Height=50;X=250;"
+  _Button_Data[2] = "Caption=Options;Left=300;Top=10;Width=200;Height=50;X=250;"
+  _Button_Data[3] = "Caption=Place_Holder;Left=300;Top=10;Width=200;Height=50;X=250;"
+  
   For i = 1 To 3 
-    Controls.SetSize(_Buttons[i],200,50)
-    Controls.Move(_Buttons[i],250,300+i*100)
+    _Buttons[i] = Controls.AddButton(_Button_Data[i]["Caption"],_Button_Data[i]["Left"],_Button_Data[i]["Right"])
+    Controls.SetSize(_Buttons[i],_Button_Data[i]["Width"],_Button_Data[i]["Height"])
+    Controls.Move(_Buttons[i],_Button_Data[i]["X"],300+i*100)
   EndFor
   
   
