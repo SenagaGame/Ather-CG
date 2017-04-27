@@ -1,6 +1,38 @@
-BackBone()
-Sub BackBone
+'to do: 
+'cards: array[name][type][location][]
+
+MM()
+BG()
+
+
+Sub BG
+  GraphicsWindow.CanResize = "false"
+  GraphicsWindow.BackgroundColor = "silver"
+  GraphicsWindow.Height = GH
+  GraphicsWindow.Width = GW
   GraphicsWindow.Show()
-  _Buttons["Start"] = Controls.AddButton("Start",300,10)
-  Controls.Move(_Buttons["Start"],5,5)
+  
 EndSub
+
+Sub MM 'main menu'
+  'add some buttons 
+  GraphicsWindow.Clear()
+  GH = 800
+  GW = 700
+  _Buttons[1] = Controls.AddButton("Play",300,10)
+  _Buttons[2] = Controls.AddButton("Options",300,10)
+  _Buttons[3] = Controls.AddButton("Place_holder",300,10)
+  Controls.Move(_Buttons[1],5,5)
+  
+EndSub
+
+Sub pregame
+  GraphicsWindow.Clear()
+  GH = 800
+  GW = 1280
+EndSub
+
+Sub Call_Card
+EndSub
+
+ImageList.LoadImage(
