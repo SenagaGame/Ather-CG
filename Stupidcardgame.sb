@@ -1,11 +1,11 @@
 'to do: 
 'cards: array[name][type][location][]
 
-MM()
-BG()
+Main_Menu()
+Back_Ground()
 
 
-Sub BG
+Sub Back_Ground
   GraphicsWindow.CanResize = "false"
   GraphicsWindow.BackgroundColor = "silver"
   GraphicsWindow.Height = GH
@@ -14,15 +14,19 @@ Sub BG
   
 EndSub
 
-Sub MM 'main menu'
+Sub Main_Menu
   'add some buttons 
   GraphicsWindow.Clear()
   GH = 800
   GW = 700
   _Buttons[1] = Controls.AddButton("Play",300,10)
   _Buttons[2] = Controls.AddButton("Options",300,10)
-  _Buttons[3] = Controls.AddButton("Place_holder",300,10)
-  Controls.Move(_Buttons[1],5,5)
+  _Buttons[3] = Controls.AddButton("Place_holder",300,10) 
+  For i = 1 To 3 
+    Controls.SetSize(_Buttons[i],200,50)
+    Controls.Move(_Buttons[i],250,300+i*100)
+  EndFor
+  
   
 EndSub
 
@@ -35,4 +39,6 @@ EndSub
 Sub Call_Card
 EndSub
 
-ImageList.LoadImage(
+Sub Options
+EndSub
+
