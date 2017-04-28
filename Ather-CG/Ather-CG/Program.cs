@@ -15,14 +15,18 @@ namespace Ather_CG
         static void Main()
         {
             Game DefaultGame = new Game();
-            DefaultGame.MainMenu();
+            DefaultGame.Start();
         }
     }
 
     class Game
     {
-        List<string> Buttons = new List<string>();
-        public void MainMenu()
+        public void Start()
+        {
+            MainMenu();
+        }
+
+        public static void MainMenu()
         {
             GraphicsWindow.Show();
             GraphicsWindow.Clear();
@@ -38,7 +42,18 @@ namespace Ather_CG
             GraphicsWindow.MouseDown += Events.MD;
         }
 
-        void CreateButton(string Caption, int Width, int Height, int XCord, int YCord)
+        public static void GameBackgroud()
+        {
+            GraphicsWindow.Clear();
+            GraphicsWindow.Height = 800;GraphicsWindow.Width = 1280;
+            GraphicsWindow.BackgroundColor = "Gray";
+            CreateButton("Main Menu", 200, 50, 50, 40);
+            GraphicsWindow.DrawLine(300, 0, 300, GraphicsWindow.Height);
+            GraphicsWindow.DrawLine(300, 600, GraphicsWindow.Width, 600);
+
+        }
+
+        public static void CreateButton(string Caption, int Width, int Height, int XCord, int YCord)
         {
             if (string.IsNullOrWhiteSpace(Caption))
             {
@@ -51,7 +66,6 @@ namespace Ather_CG
             
             string Button = Controls.AddButton(Caption, XCord, YCord);
             Controls.SetSize(Button, Width, Height);
-            Buttons.Add(Button);
         }
 
         class Events
@@ -70,8 +84,26 @@ namespace Ather_CG
         {
             public static void Buttons(string LastClickedButton)
             {
-
+                //Console.WriteLine("Button: {0} Caption: {1}", LastClickedButton, Controls.GetButtonCaption(LastClickedButton));
+                string Caption = Controls.GetButtonCaption(LastClickedButton);
+                switch (Caption)
+                {
+                    case "Play":
+                        GameBackgroud();
+                        break;
+                    case "Options":
+                        break;
+                    case "Place_Holder":
+                        break;
+                    case "Main Menu":
+                        MainMenu();
+                        break;
+                    default:
+                        GraphicsWindow.ShowMessage("This button has not yet been implemented.", "Error");
+                        break;
+                }
             }
+
             public static void MouseDown(int X, int Y)
             {
 

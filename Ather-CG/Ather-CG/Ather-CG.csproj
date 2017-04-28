@@ -35,9 +35,6 @@
     <Reference Include="LitDev">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Microsoft\Small Basic\lib\LitDev.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Kinect.Wpf.Controls">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Microsoft\Small Basic\lib\Microsoft.Kinect.Wpf.Controls.dll</HintPath>
-    </Reference>
     <Reference Include="SmallBasicLibrary">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Microsoft\Small Basic\SmallBasicLibrary.dll</HintPath>
     </Reference>
@@ -45,7 +42,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
