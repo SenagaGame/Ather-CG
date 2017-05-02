@@ -1,8 +1,15 @@
 'to do: 
 'cards: array[name][type][location][]
 'make the buttons work
-
+Lock = 0 
 Main_Menu()
+Automove()
+
+Sub automove 
+  LastClickedButton = _Buttons[2]
+  Handler()
+EndSub
+
 
 
 '    Game Screens_____________________________________________________________________________
@@ -24,7 +31,9 @@ Sub Main_Menu
     Make_Buttone()
   EndFor
   
-  GraphicsWindow.MouseMove = MouseDown
+  GraphicsWindow.MouseDown = MouseDown
+  GraphicsWindow.MouseUp = MouseUp
+  
   Controls.ButtonClicked = Button_Click
   
   Back_Ground()
@@ -41,14 +50,14 @@ EndSub
 
 Sub Game_Background
   GraphicsWindow.Clear()
-
+  
   GH = 800
   GW = 1280
   GraphicsWindow.BackgroundColor = "gray"
   Imageloader()
   
   i = 4 
-    Make_Buttone()
+  Make_Buttone()
   
   
   GraphicsWindow.DrawLine(300,0,300,GH)
@@ -94,8 +103,8 @@ EndSub
 
 Sub Make_Buttone
   _Buttons[i] = Controls.AddButton(_Button_Data[i]["Caption"],_Button_Data[i]["Left"],_Button_Data[i]["Top"])
-    Controls.SetSize(_Buttons[i],_Button_Data[i]["Width"],_Button_Data[i]["Height"])
-    Controls.Move(_Buttons[i],_Button_Data[i]["X"],_Button_Data[i]["Y"])
+  Controls.SetSize(_Buttons[i],_Button_Data[i]["Width"],_Button_Data[i]["Height"])
+  Controls.Move(_Buttons[i],_Button_Data[i]["X"],_Button_Data[i]["Y"])
 EndSub
 
 
@@ -116,7 +125,7 @@ Sub Handler
     Credits()
   ElseIf LastClickedButton= _Buttons[4] or LastClickedButton = _Buttons[5] Then 
     Main_Menu()
-
+    
   Else
     GraphicsWindow.ShowMessage("This button does not yet have an implementation","ERROR")
   EndIf
@@ -129,14 +138,31 @@ EndSub
 
 
 Sub MouseDown
-  X[1] = Shapes.GetLeft(Credit_box)+10
-  Y[1] = Shapes.GetTop(Credit_box)+10
-  X[2] = X[1] + 480
-  Y[2] = Y[1] + 560
-  If  (X[1] < GraphicsWindow.MouseX  AND  GraphicsWindow.MouseX < X[2])  And (Y[1] < GraphicsWindow.MouseY And GraphicsWindow.MouseY < Y[2]) Then
-  Shapes.Move(Testobject,GraphicsWindow.MouseX - 10,GraphicsWindow.MouseY-10)
-EndIf
+  t = 0
+  If Lock = 0 Then 
+    Lock = 1 
+    X[1] = Shapes.GetLeft(Credit_box)+10
+    Y[1] = Shapes.GetTop(Credit_box)+10
+    X[2] = X[1] + 480
+    Y[2] = Y[1] + 560
+    While t = 0 
+      movey_thing()
+    EndWhile
+  EndIf 
+EndSub
 
+sub MouseUp
+  t= 1
+  Lock = 0
+EndSub
+
+Sub movey_thing
+  If  (X[1] <= GraphicsWindow.MouseX  AND  GraphicsWindow.MouseX <= X[2])  And (Y[1] <= GraphicsWindow.MouseY And GraphicsWindow.MouseY <= Y[2]) Then
+    Shapes.Move(Testobject,GraphicsWindow.MouseX - 10,GraphicsWindow.MouseY-10)
+  Else 
+    t = 1 
+    Lock = 0
+  EndIf
 EndSub
 
 Sub Call_Card
