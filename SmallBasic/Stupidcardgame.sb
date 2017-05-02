@@ -7,6 +7,7 @@ Main_Menu()
 
 '    Game Screens_____________________________________________________________________________
 Sub Main_Menu
+  GraphicsWindow.BrushColor = "purple"
   GraphicsWindow.Clear()
   GH = 800
   GW = 700
@@ -15,10 +16,11 @@ Sub Main_Menu
   
   _Button_Data[1] = "Caption=Play;Left=300;Top=10;Width=200;Height=50;X=250;"
   _Button_Data[2] = "Caption=Options;Left=300;Top=10;Width=200;Height=50;X=250;"
-  _Button_Data[3] = "Caption=Place_Holder;Left=300;Top=10;Width=200;Height=50;X=250;"
-  _Button_Data[4] = "Caption=Main Menu;Left=40;Top=10;Width=200;Height=50;X=250;"
+  _Button_Data[3] = "Caption=Credits;Left=300;Top=10;Width=200;Height=50;X=250;"
+  _Button_Data[4] = "Caption=Main Menu;Left=40;Top=10;Width=200;Height=50;X=50;Y=40;X2=250;Y2=600"
+  _Button_Data[5] = "Caption=Main Menu;Left=40;Top=10;Width=200;Height=50;X=250;Y=700"
   
-  For i = 1 To Array.GetItemCount(_Button_Data) 
+  For i = 1 To 3
     _Buttons[i] = Controls.AddButton(_Button_Data[i]["Caption"],_Button_Data[i]["Left"],_Button_Data[i]["Top"])
     Controls.SetSize(_Buttons[i],_Button_Data[i]["Width"],_Button_Data[i]["Height"])
     Controls.Move(_Buttons[i],_Button_Data[i]["X"],300+i*100)
@@ -41,9 +43,11 @@ EndSub
 
 Sub Game_Background
   GraphicsWindow.Clear()
+
   GH = 800
   GW = 1280
   GraphicsWindow.BackgroundColor = "gray"
+  Imageloader()
   
   For i = 4 To 4
     _Buttons[i] = Controls.AddButton(_Button_Data[i]["Caption"],_Button_Data[i]["Left"],_Button_Data[i]["Right"])
@@ -53,15 +57,36 @@ Sub Game_Background
   
   GraphicsWindow.DrawLine(300,0,300,GH)
   GraphicsWindow.DrawLine(300,600,GW,600)
+  GraphicsWindow.BrushColor = "transparent"
+  square = Shapes.AddRectangle(980,600)
+  Shapes.Move(square,300,0)
+  
   
   Back_Ground()
-  GraphicsWindow.ShowMessage ("ok","null")
+  
 EndSub
 
 
 Sub Options
   
 EndSub
+
+Sub Credits
+  GraphicsWindow.Clear()
+  GraphicsWindow.BackgroundColor = LDColours.SteelBlue
+  
+  i = 5
+  _Buttons[i] = Controls.AddButton(_Button_Data[i]["Caption"],_Button_Data[i]["Left"],_Button_Data[i]["Right"])
+  Controls.SetSize(_Buttons[i],_Button_Data[i]["Width"],_Button_Data[i]["Height"])
+  Controls.Move(_Buttons[i],_Button_Data[i]["X"],_Button_Data[i]["Y"])
+  
+  GraphicsWindow.BrushColor = LDColours.WhiteSmoke 
+  Credit_box = Shapes.AddRectangle(500,580)
+  Shapes.Move(Credit_box,100,50)
+  
+  Back_Ground()
+EndSub
+
 
 '  Mechanics et all ___________________________________________________
 
@@ -76,14 +101,20 @@ Sub Handler
   ElseIf LastClickedButton = _Buttons[2] Then
     GraphicsWindow.ShowMessage("There are no Options","ERROR")
   ElseIf LastClickedButton = _Buttons[3] Then
-    
-  ElseIf LastClickedButton= _Buttons[4] Then
+    Credits()
+  ElseIf LastClickedButton= _Buttons[4] or LastClickedButton = _Buttons[5] Then 
     Main_Menu()
-  ElseIf LastClickedButton = _Buttons[5] Then
+
   Else
     GraphicsWindow.ShowMessage("This button does not yet have an implementation","ERROR")
   EndIf
 EndSub
+
+sub Imageloader
+  ImagePath = Program.Directory + "\Art Assets\Image.png"
+  Shapes.Move(Shapes.AddImage(ImagePath),301,0)
+EndSub
+
 
 Sub MouseDown
   

@@ -37,6 +37,7 @@ namespace Ather_CG
             CreateButton("Play", 200, 50, 250, 400);
             CreateButton("Options", 200, 50, 250, 500);
             CreateButton("Place_Holder", 200, 50, 250, 600);
+            CreateButton("Test ", 200, 50, -250, 600);
 
             Controls.ButtonClicked += Events.BC;
             GraphicsWindow.MouseDown += Events.MD;

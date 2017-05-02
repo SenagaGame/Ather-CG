@@ -12,3 +12,15 @@ C:\Users\Abhishek\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\obj\Debug\Ather_CG
 C:\Users\Abhishek\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\obj\Debug\Ather-CG.csproj.GenerateResource.Cache
 C:\Users\Abhishek\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\obj\Debug\Ather-CG.exe
 C:\Users\Abhishek\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\obj\Debug\Ather-CG.pdb
+C:\Users\Akira\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\bin\Debug\Ather-CG.exe.config
+C:\Users\Akira\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\bin\Debug\Ather-CG.exe
+C:\Users\Akira\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\bin\Debug\Ather-CG.pdb
+C:\Users\Akira\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\bin\Debug\LitDev.dll
+C:\Users\Akira\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\bin\Debug\SmallBasicLibrary.dll
+C:\Users\Akira\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\bin\Debug\LitDev.xml
+C:\Users\Akira\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\bin\Debug\SmallBasicLibrary.xml
+C:\Users\Akira\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\obj\Debug\Ather-CG.csprojResolveAssemblyReference.cache
+C:\Users\Akira\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\obj\Debug\Ather_CG.Properties.Resources.resources
+C:\Users\Akira\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\obj\Debug\Ather-CG.csproj.GenerateResource.Cache
+C:\Users\Akira\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\obj\Debug\Ather-CG.exe
+C:\Users\Akira\Documents\GitHub\Ather-CG\Ather-CG\Ather-CG\obj\Debug\Ather-CG.pdb
