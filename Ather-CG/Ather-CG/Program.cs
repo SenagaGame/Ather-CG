@@ -14,18 +14,14 @@ namespace Ather_CG
         /// </summary>
         static void Main()
         {
-            Game DefaultGame = new Game();
-            DefaultGame.Start();
+            UI.Images.Add("Place Holder",  ImageList.LoadImage(Program.Directory + "\\Art Assets\\Image.png"));
+            UI.MainMenu();
         }
     }
 
-    class Game
+    public static class UI
     {
-        public void Start()
-        {
-            MainMenu();
-        }
-
+        public static Dictionary<string, string> Images = new Dictionary<string, string>();
         public static void MainMenu()
         {
             GraphicsWindow.Show();
@@ -33,27 +29,44 @@ namespace Ather_CG
             GraphicsWindow.Height = 800;
             GraphicsWindow.Width = 700;
             GraphicsWindow.CanResize = false;
+            GraphicsWindow.BrushColor = "purple";
             GraphicsWindow.BackgroundColor = "silver";
-            CreateButton("Play", 200, 50, 250, 400);
-            CreateButton("Options", 200, 50, 250, 500);
-            CreateButton("Place_Holder", 200, 50, 250, 600);
-            CreateButton("Test ", 200, 50, -250, 600);
+            Utilities.CreateButton("Play", 200, 50, 250, 400);
+            Utilities.CreateButton("Options", 200, 50, 250, 500);
+            Utilities.CreateButton("Credits", 200, 50, 250, 600);
 
-            Controls.ButtonClicked += Events.BC;
-            GraphicsWindow.MouseDown += Events.MD;
+            Controls.ButtonClicked += Game.Events.BC;
+            GraphicsWindow.MouseDown += Game.Events.MD;
         }
 
-        public static void GameBackgroud()
+        public static void Credits()
         {
             GraphicsWindow.Clear();
-            GraphicsWindow.Height = 800;GraphicsWindow.Width = 1280;
-            GraphicsWindow.BackgroundColor = "Gray";
-            CreateButton("Main Menu", 200, 50, 50, 40);
-            GraphicsWindow.DrawLine(300, 0, 300, GraphicsWindow.Height);
-            GraphicsWindow.DrawLine(300, 600, GraphicsWindow.Width, 600);
+            GraphicsWindow.BackgroundColor = LDColours.SteelBlue;
+            Utilities.CreateButton("Main Menu", 200, 50, 250, 700);
+            GraphicsWindow.BrushColor = LDColours.WhiteSmoke;
 
+            LDControls.RichTextBoxReadOnly = true;
+            string Credit_Box = LDControls.AddRichTextBox(500, 580);
+            Controls.Move(Credit_Box, 100, 50);
+            LDControls.RichTextBoxReadOnly = false;
+            
+            
         }
 
+        public static void BackGround()
+        {
+            GraphicsWindow.Clear();
+            GraphicsWindow.Height = 800; GraphicsWindow.Width = 1280;
+            GraphicsWindow.BackgroundColor = "Gray";
+            Utilities.CreateButton("Main Menu", 200, 50, 50, 40);
+            GraphicsWindow.DrawLine(300, 0, 300, GraphicsWindow.Height);
+            GraphicsWindow.DrawLine(300, 600, GraphicsWindow.Width, 600);
+        }
+    }
+
+    public static class Utilities
+    {
         public static void CreateButton(string Caption, int Width, int Height, int XCord, int YCord)
         {
             if (string.IsNullOrWhiteSpace(Caption))
@@ -64,12 +77,28 @@ namespace Ather_CG
             {
                 throw new ArgumentOutOfRangeException();
             }
-            
+
             string Button = Controls.AddButton(Caption, XCord, YCord);
             Controls.SetSize(Button, Width, Height);
         }
+    }
 
-        class Events
+
+    public static class Game
+    {
+        public static void GameBackgroud()
+        {
+            GraphicsWindow.Clear();
+            GraphicsWindow.Height = 800;GraphicsWindow.Width = 1280;
+            GraphicsWindow.BackgroundColor = "Gray";
+            Utilities.CreateButton("Main Menu", 200, 50, 50, 40);
+            GraphicsWindow.DrawLine(300, 0, 300, GraphicsWindow.Height);
+            GraphicsWindow.DrawLine(300, 600, GraphicsWindow.Width, 600);
+
+            Shapes.Move(Shapes.AddImage(UI.Images["Place Holder"]), 301, 0);
+        }
+
+        public class Events
         {
             public async static void MD()
             {
@@ -93,11 +122,13 @@ namespace Ather_CG
                         GameBackgroud();
                         break;
                     case "Options":
+
                         break;
-                    case "Place_Holder":
+                    case "Credits":
+                        UI.Credits();
                         break;
                     case "Main Menu":
-                        MainMenu();
+                        UI.MainMenu();
                         break;
                     default:
                         GraphicsWindow.ShowMessage("This button has not yet been implemented.", "Error");
