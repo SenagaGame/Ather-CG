@@ -6,7 +6,7 @@ Main_Menu()
 Automove()
 
 Sub automove 
-  LastClickedButton = _Buttons[2]
+  LastClickedButton = _Buttons[3]
   Handler()
 EndSub
 
@@ -58,8 +58,8 @@ Sub Game_Background
   GraphicsWindow.DrawLine(300,0,300,GH)
   GraphicsWindow.DrawLine(300,600,GW,600)
   GraphicsWindow.BrushColor = "transparent"
-  square = Shapes.AddRectangle(980,600)
-  Shapes.Move(square,300,0)
+  square = Shapes.AddRectangle(1280,800)
+
   
   
     GraphicsWindow.Height = GH
@@ -88,7 +88,8 @@ Sub Credits
   Make_Buttone()
   
   GraphicsWindow.BrushColor = LDColours.black 
-   Box = LDControls.AddRichTextBox(500,580)
+  Box = LDControls.AddRichTextBox(500,580)
+  LDControls.RichTextBoxLoad(Box, Program.Directory + "\Art Assets\Test.rtf","true")
   
   Shapes.Move(Box,100,50)
   
