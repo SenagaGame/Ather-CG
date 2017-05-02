@@ -36,17 +36,12 @@ Sub Main_Menu
   
   Controls.ButtonClicked = Button_Click
   
-  Back_Ground()
-EndSub
-
-
-Sub Back_Ground
-  
-  GraphicsWindow.Height = GH
+    GraphicsWindow.Height = GH
   GraphicsWindow.Width = GW
   GraphicsWindow.Show()
-  
 EndSub
+
+
 
 Sub Game_Background
   GraphicsWindow.Clear()
@@ -67,7 +62,9 @@ Sub Game_Background
   Shapes.Move(square,300,0)
   
   
-  Back_Ground()
+    GraphicsWindow.Height = GH
+  GraphicsWindow.Width = GW
+  GraphicsWindow.Show()
   
 EndSub
 
@@ -90,11 +87,14 @@ Sub Credits
   i = 5
   Make_Buttone()
   
-  GraphicsWindow.BrushColor = LDColours.WhiteSmoke 
-  Credit_box = Shapes.AddRectangle(500,580)
-  Shapes.Move(Credit_box,100,50)
+  GraphicsWindow.BrushColor = LDColours.black 
+   Box = LDControls.AddRichTextBox(500,580)
   
-  Back_Ground()
+  Shapes.Move(Box,100,50)
+  
+    GraphicsWindow.Height = GH
+  GraphicsWindow.Width = GW
+  GraphicsWindow.Show()
   
 EndSub
 
