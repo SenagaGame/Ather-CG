@@ -7,27 +7,20 @@ using LitDev;
 
 namespace Ather_CG
 {
-    static class Default
-    {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        static void Main()
-        {
-            UI.Images.Add("Place Holder",  ImageList.LoadImage(Program.Directory + "\\Art Assets\\Image.png"));
-            UI.MainMenu();
-        }
-    }
-
     public static class UI
     {
         public static Dictionary<string, string> Images = new Dictionary<string, string>();
+        static void Main()
+        {
+            Images.Add("Place Holder", ImageList.LoadImage(Program.Directory + "\\Art Assets\\Image.png"));
+            MainMenu();
+        }
+
         public static void MainMenu()
         {
             GraphicsWindow.Show();
             GraphicsWindow.Clear();
-            GraphicsWindow.Height = 800;
-            GraphicsWindow.Width = 700;
+            Utilities.SizeWindow(700, 800);
             GraphicsWindow.CanResize = false;
             GraphicsWindow.BrushColor = "purple";
             GraphicsWindow.BackgroundColor = "silver";
@@ -49,15 +42,13 @@ namespace Ather_CG
             LDControls.RichTextBoxReadOnly = true;
             string Credit_Box = LDControls.AddRichTextBox(500, 580);
             Controls.Move(Credit_Box, 100, 50);
-            LDControls.RichTextBoxReadOnly = false;
-            
-            
+            LDControls.RichTextBoxReadOnly = false; 
         }
 
         public static void BackGround()
         {
             GraphicsWindow.Clear();
-            GraphicsWindow.Height = 800; GraphicsWindow.Width = 1280;
+            Utilities.SizeWindow(1280, 800);
             GraphicsWindow.BackgroundColor = "Gray";
             Utilities.CreateButton("Main Menu", 200, 50, 50, 40);
             GraphicsWindow.DrawLine(300, 0, 300, GraphicsWindow.Height);
@@ -81,6 +72,11 @@ namespace Ather_CG
             string Button = Controls.AddButton(Caption, XCord, YCord);
             Controls.SetSize(Button, Width, Height);
         }
+        public static void SizeWindow(int Width, int Height)
+        {
+            GraphicsWindow.Width = Width;
+            GraphicsWindow.Height = Height;
+        }
     }
 
 
@@ -89,7 +85,7 @@ namespace Ather_CG
         public static void GameBackgroud()
         {
             GraphicsWindow.Clear();
-            GraphicsWindow.Height = 800;GraphicsWindow.Width = 1280;
+            Utilities.SizeWindow(1280, 800);
             GraphicsWindow.BackgroundColor = "Gray";
             Utilities.CreateButton("Main Menu", 200, 50, 50, 40);
             GraphicsWindow.DrawLine(300, 0, 300, GraphicsWindow.Height);
@@ -138,7 +134,7 @@ namespace Ather_CG
 
             public static void MouseDown(int X, int Y)
             {
-
+                
             }
         }
     }
