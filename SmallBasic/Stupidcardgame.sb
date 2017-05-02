@@ -14,19 +14,17 @@ Sub Main_Menu
   GraphicsWindow.CanResize = "false"
   GraphicsWindow.BackgroundColor = "silver"
   
-  _Button_Data[1] = "Caption=Play;Left=300;Top=10;Width=200;Height=50;X=250;"
-  _Button_Data[2] = "Caption=Options;Left=300;Top=10;Width=200;Height=50;X=250;"
-  _Button_Data[3] = "Caption=Credits;Left=300;Top=10;Width=200;Height=50;X=250;"
-  _Button_Data[4] = "Caption=Main Menu;Left=40;Top=10;Width=200;Height=50;X=50;Y=40;X2=250;Y2=600"
+  _Button_Data[1] = "Caption=Play;Left=300;Top=10;Width=200;Height=50;X=250;Y=400"
+  _Button_Data[2] = "Caption=Options;Left=300;Top=10;Width=200;Height=50;X=250;Y=500"
+  _Button_Data[3] = "Caption=Credits;Left=300;Top=10;Width=200;Height=50;X=250;Y=600"
+  _Button_Data[4] = "Caption=Main Menu;Left=40;Top=10;Width=200;Height=50;X=50;Y=40"
   _Button_Data[5] = "Caption=Main Menu;Left=40;Top=10;Width=200;Height=50;X=250;Y=700"
   
   For i = 1 To 3
-    _Buttons[i] = Controls.AddButton(_Button_Data[i]["Caption"],_Button_Data[i]["Left"],_Button_Data[i]["Top"])
-    Controls.SetSize(_Buttons[i],_Button_Data[i]["Width"],_Button_Data[i]["Height"])
-    Controls.Move(_Buttons[i],_Button_Data[i]["X"],300+i*100)
+    Make_Buttone()
   EndFor
   
-  GraphicsWindow.MouseDown = MouseDown
+  GraphicsWindow.MouseMove = MouseDown
   Controls.ButtonClicked = Button_Click
   
   Back_Ground()
@@ -49,11 +47,9 @@ Sub Game_Background
   GraphicsWindow.BackgroundColor = "gray"
   Imageloader()
   
-  For i = 4 To 4
-    _Buttons[i] = Controls.AddButton(_Button_Data[i]["Caption"],_Button_Data[i]["Left"],_Button_Data[i]["Right"])
-    Controls.SetSize(_Buttons[i],_Button_Data[i]["Width"],_Button_Data[i]["Height"])
-    Controls.Move(_Buttons[i],_Button_Data[i]["X"],_Button_Data[i]["Y"])
-  EndFor
+  i = 4 
+    Make_Buttone()
+  
   
   GraphicsWindow.DrawLine(300,0,300,GH)
   GraphicsWindow.DrawLine(300,600,GW,600)
@@ -68,6 +64,13 @@ EndSub
 
 
 Sub Options
+  R= 1
+  GraphicsWindow.Clear()
+  Credit_box = Shapes.AddRectangle(500,580)
+  Shapes.Move(Credit_box,100,50)
+  Testobject = Shapes.AddEllipse(20,20)
+  
+  
   
 EndSub
 
@@ -76,19 +79,26 @@ Sub Credits
   GraphicsWindow.BackgroundColor = LDColours.SteelBlue
   
   i = 5
-  _Buttons[i] = Controls.AddButton(_Button_Data[i]["Caption"],_Button_Data[i]["Left"],_Button_Data[i]["Right"])
-  Controls.SetSize(_Buttons[i],_Button_Data[i]["Width"],_Button_Data[i]["Height"])
-  Controls.Move(_Buttons[i],_Button_Data[i]["X"],_Button_Data[i]["Y"])
+  Make_Buttone()
   
   GraphicsWindow.BrushColor = LDColours.WhiteSmoke 
   Credit_box = Shapes.AddRectangle(500,580)
   Shapes.Move(Credit_box,100,50)
   
   Back_Ground()
+  
 EndSub
 
 
-'  Mechanics et all ___________________________________________________
+'  Mechanics et al ___________________________________________________
+
+Sub Make_Buttone
+  _Buttons[i] = Controls.AddButton(_Button_Data[i]["Caption"],_Button_Data[i]["Left"],_Button_Data[i]["Top"])
+    Controls.SetSize(_Buttons[i],_Button_Data[i]["Width"],_Button_Data[i]["Height"])
+    Controls.Move(_Buttons[i],_Button_Data[i]["X"],_Button_Data[i]["Y"])
+EndSub
+
+
 
 Sub Button_Click
   LastClickedButton = Controls.LastClickedButton
@@ -99,7 +109,9 @@ Sub Handler
   If LastClickedButton = _Buttons[1] Then
     Game_Background()
   ElseIf LastClickedButton = _Buttons[2] Then
-    GraphicsWindow.ShowMessage("There are no Options","ERROR")
+    Options()
+    i=5
+    Make_Buttone()
   ElseIf LastClickedButton = _Buttons[3] Then
     Credits()
   ElseIf LastClickedButton= _Buttons[4] or LastClickedButton = _Buttons[5] Then 
@@ -117,7 +129,14 @@ EndSub
 
 
 Sub MouseDown
-  
+  X[1] = Shapes.GetLeft(Credit_box)+10
+  Y[1] = Shapes.GetTop(Credit_box)+10
+  X[2] = X[1] + 480
+  Y[2] = Y[1] + 560
+  If  (X[1] < GraphicsWindow.MouseX  AND  GraphicsWindow.MouseX < X[2])  And (Y[1] < GraphicsWindow.MouseY And GraphicsWindow.MouseY < Y[2]) Then
+  Shapes.Move(Testobject,GraphicsWindow.MouseX - 10,GraphicsWindow.MouseY-10)
+EndIf
+
 EndSub
 
 Sub Call_Card
